@@ -69,7 +69,6 @@
             transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Change.org Bölməsi */
         .petition-box {
             margin: 20px;
             padding: 20px;
@@ -78,6 +77,8 @@
             border-radius: 25px;
             text-align: center;
         }
+
+        .btn-petition { background: var(--change); color: white; display: inline-block; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 10px; }
 
         .glitch-box {
             margin: 20px;
@@ -111,7 +112,6 @@
         }
 
         .action-link.done { background: var(--success); }
-        .btn-petition { background: var(--change); color: white; display: inline-block; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 10px; }
 
         .social-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 25px;
@@ -121,10 +121,6 @@
             display: flex; align-items: center; justify-content: center;
             padding: 15px; border-radius: 20px; text-decoration: none; color: white; font-weight: 800;
         }
-
-        .faq-section { padding: 20px; background: #f8fafc; border-radius: 25px; margin: 20px; }
-        .faq-item { margin-bottom: 15px; font-size: 14px; }
-        .faq-q { font-weight: bold; color: var(--glitch); }
 
         footer { text-align: center; padding: 35px; font-size: 13px; color: #64748b; font-weight: 500; }
     </style>
@@ -163,9 +159,9 @@
         </div>
 
         <div class="field-group">
-            <label>Message (Suallarla Birlikdə)</label>
+            <label>Message (English)</label>
             <div class="copy-area">
-                <textarea id="gl-msg" rows="5" readonly>Dear GLITCH Productions Team
+                <textarea id="gl-msg" rows="5" readonly>Dear GLITCH Productions Team,
 
 I am writing to you on behalf of the passionate "The Amazing Digital Circus" (TADC) fanbase in Azerbaijan. We are reaching out to express our immense interest in seeing "TADC: The Last Act" screened in our local cinemas.
 
@@ -183,19 +179,6 @@ TADC Azerbaijan Community</textarea>
     <div style="padding:0 25px; font-weight: 800; color: #475569; font-size: 15px;">YERLİ KİNOTEATRLAR</div>
     <div id="cinema-list"></div>
 
-    <div class="faq-section">
-        <div style="font-weight: 800; margin-bottom: 10px;">Tez-tez Verilən Sorular</div>
-        <div class="faq-item">
-            <div class="faq-q">Mən necə kömək edə bilərəm?</div>
-            <div>İmza ataraq və yuxarıdakı düymələrlə mail göndərərək dəstək ola bilərsiniz.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">Biletlər nə vaxt çıxacaq?</div>
-            <div>Müraciətimiz müsbət cavablanan kimi rəsmi səhifələrimizdə elan ediləcək.</div>
-        </div>
-    </div>
-
-    <div style="padding:0 25px; font-weight: 800; color: #475569; font-size: 15px;">BİZİ İZLƏYİN</div>
     <div class="social-grid">
         <a href="https://x.com/tadcazer" target="_blank" class="social-btn" style="background: #000;">X / Twitter</a>
         <a href="https://www.instagram.com/tadcazer" target="_blank" class="social-btn" style="background: var(--insta);">Instagram</a>
@@ -216,12 +199,12 @@ TADC Azerbaijan Community</textarea>
     ];
 
     let steps = new Set();
-    const total = cinemas.length + 2; // +1 Glitch, +1 Petition
+    const total = cinemas.length + 2; 
 
     function copyText(id) {
         document.getElementById(id).select();
         document.execCommand("copy");
-        alert("Kopyalandı!");
+        alert("Mətn kopyalandı!");
     }
 
     function updateStats(id) {
@@ -236,7 +219,7 @@ TADC Azerbaijan Community</textarea>
     window.onload = () => {
         const list = document.getElementById('cinema-list');
         const sub = encodeURIComponent("TADC: The Last Act Azərbaycan Nümayişi Haqqında Müraciət");
-        const body = encodeURIComponent("Hörmətli Filial Müdiri və Marketinq Komandası,
+        const body = encodeURIComponent(`Hörmətli Filial Müdiri və Marketinq Komandası,
 
 Biz, Azərbaycandakı "The Amazing Digital Circus" (TADC) fanat icması olaraq sizə müraciət edirik. Dünyada milyonlarla izləyicisi olan bu fenomenal layihənin final seriyası olan "The Last Act"in yerli kinoteatrlarımızda nümayiş olunmasını böyük səbirsizliklə gözləyirik.
 
@@ -247,23 +230,23 @@ Bu layihənin nümayiş imkanlarını nəzərdən keçirməyinizi və bizə müs
 Diqqətiniz üçün təşəkkür edirik.
 
 Hörmətlə,
-TADC Azərbaycan Fan İcması");
+TADC Azərbaycan Fan İcması`);
 
         cinemas.forEach((c, i) => {
             const div = document.createElement('div');
             div.className = 'cinema-item';
             div.innerHTML = `
                 <div><strong>${c.name}</strong><br><small>${c.email}</small></div>
-                <a href="mailto:${c.email}?subject=${sub}&body=${body}" class="action-link" onclick="handleMail(this, '${i}')">Mail Aç</a>
+                <a href="mailto:${c.email}?subject=${sub}&body=${body}" class="action-link" onclick="handleMail(this, 'c-${i}')">Mail Aç</a>
             `;
             list.appendChild(div);
         });
     };
 
-    function handleMail(btn, i) {
+    function handleMail(btn, id) {
         btn.innerText = "Açıldı";
         btn.classList.add('done');
-        updateStats(`c-${i}`);
+        updateStats(id);
     }
 </script>
 
