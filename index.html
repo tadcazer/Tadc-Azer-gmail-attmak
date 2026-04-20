@@ -165,12 +165,10 @@
         <div class="field-group">
             <label>Message (Suallarla Birlikdə)</label>
             <div class="copy-area">
-                <textarea id="gl-msg" rows="5" readonly>Dear GLITCH Productions Team, I am writing on behalf of the Azerbaijan fanbase. We want to see 'TADC: The Last Act' in our cinemas. 
-
-Questions:
-1. Are there specific distribution requirements for Azerbaijan?
-2. Who should local cinema chains contact for partnership?
-3. Can you provide promotional assets if a deal is reached?</textarea>
+                <textarea id="gl-msg" rows="5" readonly>Dear GLITCH Productions Team I am writing to you on behalf of the passionate "The Amazing Digital Circus" (TADC) fanbase in Azerbaijan. We are reaching out to express our immense interest in seeing "TADC: The Last Act" screened in our local cinemas. There is a significant audience here waiting for the grand finale. We are already contacting local cinema chains like Park Cinema and CinemaPlus to show them there is high demand. We would love to have your support in making this a reality for the fans in Azerbaijan.
+Thank you for creating such an amazing world!
+Best regards,
+TADC Azerbaijan Community</textarea>
                 <button class="copy-btn" onclick="copyText('gl-msg')">Kopyala</button>
             </div>
         </div>
@@ -232,7 +230,7 @@ Questions:
     window.onload = () => {
         const list = document.getElementById('cinema-list');
         const sub = encodeURIComponent("TADC: The Last Act Azərbaycan Nümayişi Haqqında Müraciət");
-        const body = encodeURIComponent("Hörmətli rəhbərlik, bu layihənin Azərbaycan kinoteatrlarında nümayişini xahiş edirik.\n\nSuallarımız:\n1. Nümayiş şərtləri üçün GLITCH ilə əlaqə saxlamısınızmı?\n2. Kütləvi baxış üçün seanslar ayrıla bilərmi?\n3. İzləyici marağını ölçmək üçün sorğu keçirilməsi mümkündürmü?");
+        const body = encodeURIComponent("Hörmətli Filial Müdiri və Marketinq Komandası, Biz, Azərbaycandakı "The Amazing Digital Circus" (TADC) fanat icması olaraq sizə müraciət edirik. Dünyada milyonlarla izləyicisi olan bu fenomenal layihənin final seriyası olan "The Last Act"in yerli kinoteatrlarımızda nümayiş olunmasını böyük səbirsizliklə gözləyirik. Məlumat üçün bildirmək istəyirik ki, ölkəmizdə bu layihənin çox böyük və aktiv izləyici kütləsi mövcuddur. Filmin kinoteatrlarda nümayişi həm biz fanatları sevindirər, həm də yerli kino bazarı üçün böyük maraq kəsb edərdi. Bu layihənin nümayiş imkanlarını nəzərdən keçirməyinizi və bizə müsbət rəy bildirməyinizi xahiş edirik. Biz icma olaraq nümayişin təbliği üçün hər cür sosial media dəstəyi verməyə hazırıq. Diqqətiniz üçün təşəkkür edirik. Hörmətlə, TADC Azərbaycan Fan İcması");
 
         cinemas.forEach((c, i) => {
             const div = document.createElement('div');
