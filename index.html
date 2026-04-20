@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TADC Azərbaycan — Kampaniya Paneli</title>
+    <style>
+        :root {
+            --primary: #1d9bf0;
+            --glitch: #a855f7;
+            --success: #00ba7c;
+            --bg-glass: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            /* Arxa plan şəkli sənin göndərdiyin posterdir */
+            background-image: url('https://tadcazer.github.io/Tadc-Azer-gmail-attmak/index.html'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px 10px;
+            color: #0f1419;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(15px);
+            border-radius: 32px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--glitch));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 { margin: 0; font-size: 26px; font-weight: 900; letter-spacing: -0.5px; }
+
+        .status-card {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .glitch-helper {
+            margin: 20px;
+            padding: 20px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 2px solid var(--glitch);
+            border-radius: 24px;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 12px; font-weight: bold; color: var(--glitch); margin-bottom: 6px; }
+        
+        .copy-wrapper { display: flex; gap: 8px; }
+        .copy-wrapper input, .copy-wrapper textarea {
+            flex: 1; padding: 12px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 13px; background: #fff;
+        }
+
+        .btn-copy {
+            background: var(--primary);
+            color: white; border: none; padding: 0 15px; border-radius: 12px; font-weight: bold; cursor: pointer;
+        }
+
+        .company-card {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px; margin: 12px 20px; background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px; border: 1px solid transparent; transition: 0.3s;
+        }
+
+        .company-card.done { border-color: var(--success); background: rgba(240, 255, 244, 0.95); }
+
+        .btn-action {
+            background: var(--primary); color: white; text-decoration: none;
+            padding: 10px 20px; border-radius: 25px; font-size: 13px; font-weight: bold;
+        }
+
+        .btn-action.done { background: var(--success); }
+
+        footer { text-align: center; padding: 30px; font-size: 12px; color: #64748b; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <header>
+        <h1>TADC AZƏRBAYCAN</h1>
+        <p>Müraciət və Kampaniya Paneli</p>
+    </header>
+
+    <div class="status-card">
+        <div id="stat-text" style="font-weight: 900; font-size: 16px;">0 / 5 Tamamlanıb</div>
+        <div class="progress-bar"><div class="progress-fill" id="fill-bar"></div></div>
+    </div>
+
+    <div class="glitch-helper">
+        <h3 style="margin-top:0; color:var(--glitch); font-size:18px;">🎬 GLITCH Form Köməkçisi</h3>
+        <a href="https://www.glitchprod.com/contact" target="_blank" class="btn-action" style="display:block; text-align:center; margin-bottom:15px; background:var(--glitch);" onclick="markStep('glitch')">
+            Contact Səhifəsini Aç
+        </a>
+        
+        <div class="input-group">
+            <label>Mövzu (Subject)</label>
+            <div class="copy-wrapper">
+                <input type="text" id="subject" value="Cinema Request - TADC: The Last Act Azerbaijan" readonly>
+                <button class="btn-copy" onclick="copy('subject')">Kopyala</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Mesaj (Message)</label>
+            <div class="copy-wrapper">
+                <textarea id="message" rows="3" readonly>Dear GLITCH Team, we are a huge community in Azerbaijan. Please consider screening 'TADC: The Last Act' in our local cinemas!</textarea>
+                <button class="btn-copy" onclick="copy('message')">Kopyala</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding:0 20px; font-weight: 800; color: #475569; font-size: 14px;">YERLİ KİNOTEATRLAR</div>
+    <div id="list-container"></div>
+
+    <footer>
+        © 2026 TADC Azerbaijan Fan Community<br>
+        @tadcazer tərəfindən hazırlanmışdır.
+    </footer>
+</div>
+
+<script>
+    /* Kinoteatr məlumatları */
+    const cinemaData = [
+        { name: "Park Cinema", mail: "info@parkcinema.az" },
+        { name: "CinemaPlus", mail: "info@cinemaplus.az" },
+        { name: "CineMastercard", mail: "info@cinemastercard.az" },
+        { name: "AF Media", mail: "office@afmedia.az" }
+    ];
+
+    let completedSteps = new Set();
+    const totalSteps = cinemaData.length + 1;
+
+    function copy(id) {
+        const el = document.getElementById(id);
+        el.select();
+        document.execCommand("copy");
+        alert("Kopyalandı!");
+    }
+
+    function markStep(id) {
+        if(!completedSteps.has(id)) {
+            completedSteps.add(id);
+            const percent = (completedSteps.size / totalSteps) * 100;
+            document.getElementById('fill-bar').style.width = percent + '%';
+            document.getElementById('stat-text').innerText = `${completedSteps.size} / ${totalSteps} Tamamlanıb`;
+        }
+    }
+
+    window.onload = () => {
+        const container = document.getElementById('list-container');
+        const mailSubject = encodeURIComponent("TADC: The Last Act Azərbaycan Nümayişi");
+        const mailBody = "Salam, 'The Amazing Digital Circus: The Last Act' finalını Azərbaycan kinoteatrlarında görmək istəyirik.";
+
+        cinemaData.forEach((c, index) => {
+            const card = document.createElement('div');
+            card.className = 'company-card';
+            card.id = `card-${index}`;
+            card.innerHTML = `
+                <div><strong>${c.name}</strong><br><small style="color:#64748b">${c.mail}</small></div>
+                <a href="mailto:${c.mail}?subject=${mailSubject}&body=${mailBody}" class="btn-action" onclick="handleMail(${index})">Mail Aç</a>
+            `;
+            container.appendChild(card);
+        });
+    };
+
+    function handleMail(index) {
+        const card = document.getElementById(`card-${index}`);
+        card.classList.add('done');
+        const btn = card.querySelector('.btn-action');
+        btn.innerText = "Göndərildi";
+        btn.classList.add('done');
+        markStep(`card-${index}`);
+    }
+</script>
+
+</body>
+</html>
