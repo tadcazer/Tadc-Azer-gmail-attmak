@@ -1,0 +1,35 @@
+{
+  "campaign": {
+    "title": "TADC: The Last Act — Azərbaycan Nümayiş Tələbi",
+    "target_signatures": 2500,
+    "current_signatures": 2135,
+    "last_update": "2026-04-20T14:54:30Z",
+    "petition_link": "https://www.change.org/tadc-azerbaijan"
+  },
+  "recent_supporters": [
+    {
+      "name": "Ayxan",
+      "location": "Bakı",
+      "comment": "Digital Circus-u kinoda görmək istəyirik!",
+      "timestamp": "2026-04-20T21:45:00Z"
+    },
+    {
+      "name": "Leyla",
+      "location": "Gəncə",
+      "comment": "Glitch Productions, please come to Azerbaijan!",
+      "timestamp": "2026-04-20T20:10:00Z"
+    },
+    {
+      "name": "Elvin",
+      "location": "Sumqayıt",
+      "comment": "Final seriyası möhtəşəm olacaq, ümid edirəm Park Cinema-da olar.",
+      "timestamp": "2026-04-20T18:30:00Z"
+    }
+  ],
+  "milestones": {
+    "500": "Tamamlandı",
+    "1000": "Tamamlandı",
+    "2000": "Tamamlandı",
+    "2500": "Davam edir"
+  }
+}
