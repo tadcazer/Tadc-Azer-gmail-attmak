@@ -41,11 +41,21 @@
         header {
             background: linear-gradient(135deg, var(--primary), var(--glitch));
             color: white;
-            padding: 45px 20px;
-            text-align: center;
+            padding: 30px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
 
-        header h1 { margin: 0; font-size: 28px; font-weight: 900; letter-spacing: -1px; text-transform: uppercase; }
+        .header-logo {
+            width: 120px; /* Logonu ölçüsü */
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+        }
+
+        .header-text { text-align: left; }
+        header h1 { margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -1px; text-transform: uppercase; }
 
         .progress-section {
             padding: 25px;
@@ -129,8 +139,11 @@
 
 <div class="app-container">
     <header>
-        <h1>TADC AZƏRBAYCAN</h1>
-        <div style="font-size: 14px; opacity: 0.9; margin-top: 5px;">Rəsmi Kampaniya Paneli</div>
+        <img src="TADC Logo.jpg" alt="TADC Logo" class="header-logo">
+        <div class="header-text">
+            <h1>TADC AZƏRBAYCAN</h1>
+            <div style="font-size: 14px; opacity: 0.9;">Rəsmi Kampaniya Paneli</div>
+        </div>
     </header>
 
     <div class="progress-section">
