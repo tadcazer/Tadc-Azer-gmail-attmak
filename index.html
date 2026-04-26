@@ -11,8 +11,7 @@
             --success: #00ba7c;
             --insta: #E4405F;
             --change: #ed2d2e;
-            --bg-overlay: rgba(255, 255, 255, 0.95);
-            --card-bg: #ffffff;
+            --bg-overlay: rgba(255, 255, 255, 0.96);
         }
 
         body {
@@ -45,17 +44,10 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        .header-logo {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-        }
-
-        header h1 { margin: 0; font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
+        .header-logo { width: 70px; height: 70px; object-fit: contain; }
+        header h1 { margin: 0; font-size: 20px; font-weight: 900; }
 
         .progress-section {
             padding: 20px 25px;
@@ -80,7 +72,7 @@
 
         .section-title {
             padding: 20px 25px 5px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 800;
             color: #64748b;
             text-transform: uppercase;
@@ -88,25 +80,18 @@
         }
 
         .card {
-            margin: 15px 20px;
-            padding: 20px;
+            margin: 10px 20px;
+            padding: 18px;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
             border: 1px solid #f1f5f9;
-        }
-
-        .petition-card {
-            background: linear-gradient(to right, #fff1f2, #ffffff);
-            border: 2px dashed var(--change);
-            text-align: center;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 24px;
+            padding: 12px;
             border-radius: 14px;
             text-decoration: none;
             font-weight: 700;
@@ -121,106 +106,28 @@
         .btn-primary { background: var(--primary); color: white; }
         .btn-glitch { background: var(--glitch); color: white; }
         .btn-change { background: var(--change); color: white; }
-        
-        .btn:active { transform: scale(0.98); }
         .btn.done { background: var(--success) !important; opacity: 0.8; pointer-events: none; }
 
-        .copy-group {
-            margin-top: 15px;
-        }
+        .copy-group { margin-top: 12px; }
+        .copy-group label { display: block; font-size: 11px; font-weight: 700; color: var(--glitch); margin-bottom: 4px; }
         
-        .copy-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--glitch);
-            margin-bottom: 5px;
-        }
-
         .copy-box {
-            display: flex;
-            gap: 8px;
-            background: #f8fafc;
-            padding: 5px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
+            display: flex; gap: 5px; background: #f8fafc; padding: 5px; border-radius: 10px; border: 1px solid #e2e8f0;
         }
 
-        .copy-box input, .copy-box textarea {
-            flex: 1;
-            border: none;
-            background: transparent;
-            padding: 8px;
-            font-size: 13px;
-            color: #334155;
-            outline: none;
-        }
+        .copy-box input { flex: 1; border: none; background: transparent; padding: 5px; font-size: 12px; outline: none; }
 
-        .btn-copy {
-            background: #e2e8f0;
-            border: none;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .btn-copy:hover { background: #cbd5e1; }
+        .btn-copy { background: #e2e8f0; border: none; padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; cursor: pointer; }
 
         .cinema-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: white;
-            border-radius: 18px;
-            margin: 10px 20px;
-            border: 1px solid #f1f5f9;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 18px; background: white; border-radius: 15px; margin: 8px 20px; border: 1px solid #f1f5f9;
         }
 
-        .cinema-info b { font-size: 15px; display: block; }
-        .cinema-info span { font-size: 12px; color: #64748b; }
+        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 20px; }
+        .social-btn { padding: 12px; border-radius: 12px; text-align: center; color: white; text-decoration: none; font-weight: 700; font-size: 13px; }
 
-        .action-mail {
-            padding: 8px 16px;
-            font-size: 13px;
-            border-radius: 10px;
-            min-width: 80px;
-            text-align: center;
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            padding: 20px;
-        }
-
-        .social-btn {
-            padding: 12px;
-            border-radius: 15px;
-            text-align: center;
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            font-size: 12px;
-            color: #94a3b8;
-            line-height: 1.6;
-        }
-
-        /* Animasiya */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .cinema-item { animation: fadeIn 0.4s ease forwards; }
+        footer { text-align: center; padding: 25px; font-size: 11px; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -230,58 +137,57 @@
         <img src="TADC Logo.png" alt="TADC" class="header-logo">
         <div>
             <h1>TADC AZƏRBAYCAN</h1>
-            <div style="font-size: 13px; opacity: 0.85; font-weight: 500;">Rəsmi Kampaniya Paneli v2.0</div>
+            <div style="font-size: 12px; opacity: 0.9;">Kampaniya Paneli v2.1</div>
         </div>
     </header>
 
     <div class="progress-section">
-        <div id="stat-counter" style="font-weight: 800; font-size: 16px; display: flex; justify-content: space-between;">
-            <span>Proqres</span>
-            <span id="step-text">0 / 6 Addım</span>
+        <div style="font-weight: 800; font-size: 15px; display: flex; justify-content: space-between;">
+            <span>Ümumi Proqres</span>
+            <span id="step-text">0 / 7 Addım</span>
         </div>
         <div class="bar-container"><div class="bar-fill" id="progress-fill"></div></div>
     </div>
 
-    <div class="section-title">1. Kollektiv İmza</div>
-    <div class="card petition-card">
-        <h3 style="margin:0 0 10px 0; color:var(--change); font-size: 17px;">✍️ Change.org Kampaniyası</h3>
-        <p style="font-size:13px; color: #64748b; margin-bottom: 15px;">Səsimizi rəqəmsal olaraq çatdırmağın ən asan yolu!</p>
-        <a href="https://c.org/sX8JJLZXY2" target="_blank" class="btn btn-change" id="btn-petition" onclick="completeStep('petition')">İmza At</a>
+    <div class="section-title">1. İmza Kampaniyası</div>
+    <div class="card" style="border: 2px dashed var(--change);">
+        <a href="https://c.org/sX8JJLZXY2" target="_blank" class="btn btn-change" id="btn-petition" onclick="completeStep('petition')">Change.org İmza At</a>
     </div>
 
-    <div class="section-title">2. İstehsalçıya Mesaj</div>
+    <div class="section-title">2. İstehsalçı (GLITCH)</div>
     <div class="card">
-        <a href="https://www.glitchprod.com/contact" target="_blank" class="btn btn-glitch" id="btn-glitch" onclick="completeStep('glitch')">GLITCH Formunu Aç</a>
-        
+        <div style="margin-bottom: 15px;">
+            <small style="color: #64748b; display: block; margin-bottom: 5px;">Rəsmi Sayt vasitəsilə:</small>
+            <a href="https://www.glitchprod.com/contact" target="_blank" class="btn btn-glitch" id="btn-glitch" onclick="completeStep('glitch')">Veb Formu Aç</a>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #f1f5f9; margin: 15px 0;">
+
+        <div>
+            <small style="color: #64748b; display: block; margin-bottom: 5px;">Biznes ünvanına birbaşa yaz:</small>
+            <a id="btn-glitch-mail" href="#" class="btn btn-primary" style="background: #4f46e5;" onclick="sendGlitchMail()">Gmail: business@...</a>
+        </div>
+
         <div class="copy-group">
             <label>Mövzu (Subject)</label>
             <div class="copy-box">
-                <input type="text" id="gl-sub" value="Cinema Request - TADC: The Last Act Azerbaijan" readonly>
+                <input type="text" id="gl-sub" value="Business Inquiry - TADC Azerbaijan" readonly>
                 <button class="btn-copy" onclick="copyText('gl-sub')">Kopyala</button>
-            </div>
-        </div>
-
-        <div class="copy-group">
-            <label>Mesaj (Message)</label>
-            <div class="copy-box">
-                <textarea id="gl-msg" rows="3" readonly>Dear GLITCH, Azerbaijan fans are waiting for TADC: The Last Act in cinemas!</textarea>
-                <button class="btn-copy" onclick="copyText('gl-msg')">Kopyala</button>
             </div>
         </div>
     </div>
 
-    <div class="section-title">3. Kinoteatrlara Müraciət</div>
-    <div id="cinema-list">
-        </div>
+    <div class="section-title">3. Yerli Kinoteatrlar</div>
+    <div id="cinema-list"></div>
 
     <div class="social-grid">
         <a href="https://x.com/tadcazer" target="_blank" class="social-btn" style="background: #000;">X / Twitter</a>
-        <a href="https://www.instagram.com/tadcazer" target="_blank" class="social-btn" style="background: var(--insta);">Instagram</a>
+        <a href="https://instagram.com/tadcazer" target="_blank" class="social-btn" style="background: var(--insta);">Instagram</a>
     </div>
 
     <footer>
         © 2026 TADC Azerbaijan Fan Community<br>
-        Bu panel fanatlar tərəfindən koordinasiya üçün yaradılmışdır.
+        business@glitchprod.com ünvanına müraciət əlavə edildi.
     </footer>
 </div>
 
@@ -294,16 +200,13 @@
     ];
 
     let completedSteps = new Set();
-    const totalSteps = cinemas.length + 2;
+    const totalSteps = cinemas.length + 3; // 4 cinema + 1 petition + 1 glitch form + 1 glitch mail
 
     function copyText(id) {
         const el = document.getElementById(id);
         el.select();
         document.execCommand("copy");
-        const btn = event.target;
-        const originalText = btn.innerText;
-        btn.innerText = "Kopyalandı!";
-        setTimeout(() => btn.innerText = originalText, 2000);
+        alert("Kopyalandı!");
     }
 
     function completeStep(id) {
@@ -316,35 +219,35 @@
     }
 
     function updateProgress() {
-        const count = completedSteps.size;
-        const percent = (count / totalSteps) * 100;
+        const percent = (completedSteps.size / totalSteps) * 100;
         document.getElementById('progress-fill').style.width = percent + '%';
-        document.getElementById('step-text').innerText = `${count} / ${totalSteps} Addım`;
+        document.getElementById('step-text').innerText = `${completedSteps.size} / ${totalSteps} Addım`;
     }
 
-    function setupCinemas() {
+    function sendGlitchMail() {
+        const sub = "Business Inquiry - TADC: The Last Act Azerbaijan Screenings";
+        const body = "Dear GLITCH Business Team,\n\nWe are interested in discussing the theatrical release of TADC: The Last Act in Azerbaijan...";
+        window.open(`mailto:business@glitchprod.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`);
+        completeStep('glitch-mail');
+    }
+
+    window.onload = () => {
         const list = document.getElementById('cinema-list');
-        const subject = encodeURIComponent("TADC: The Last Act Azərbaycan Nümayişi");
-        const body = encodeURIComponent("Hörmətli rəhbərlik,\n\nAzərbaycan TADC icması olaraq, 'The Amazing Digital Circus: The Last Act' filmini sizin kinoteatrlarda görmək istəyirik. Yüksək tələbi nəzərə almağınızı xahiş edirik.");
+        const sub = encodeURIComponent("TADC: The Last Act Azərbaycan Nümayişi");
+        const body = encodeURIComponent("Salam, bu filmi Azərbaycan kinoteatrlarında görmək istəyirik!");
 
         cinemas.forEach((c, i) => {
-            const item = document.createElement('div');
-            item.className = 'cinema-item';
-            item.innerHTML = `
-                <div class="cinema-info">
-                    <b>${c.name}</b>
-                    <span>${c.email}</span>
-                </div>
-                <a href="mailto:${c.email}?subject=${subject}&body=${body}" 
-                   class="btn btn-primary action-mail" 
-                   id="btn-c${i}" 
-                   onclick="completeStep('c${i}')">Mail</a>
+            const div = document.createElement('div');
+            div.className = 'cinema-item';
+            div.innerHTML = `
+                <div style="font-size:14px;"><b>${c.name}</b></div>
+                <a href="mailto:${c.email}?subject=${sub}&body=${body}" 
+                   class="btn btn-primary" style="width: auto; padding: 6px 15px; font-size: 12px;"
+                   id="btn-c${i}" onclick="completeStep('c${i}')">Mail At</a>
             `;
-            list.appendChild(item);
+            list.appendChild(div);
         });
     }
-
-    window.onload = setupCinemas;
 </script>
 
 </body>
