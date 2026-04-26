@@ -11,196 +11,205 @@
             --success: #00ba7c;
             --insta: #E4405F;
             --change: #ed2d2e;
-            --bg-overlay: rgba(255, 255, 255, 0.9);
+            --bg-glass: rgba(255, 255, 255, 0.85);
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-image: url('background.png'); 
-            background-size: cover;
-            background-position: center;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             background-attachment: fixed;
             margin: 0;
             display: flex;
             justify-content: center;
-            padding: 20px 10px;
-            color: #0f1419;
+            padding: 20px 15px;
+            color: #1e293b;
+        }
+
+        /* Arxa fondakı hərəkətli dairə effektləri */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -10%; left: -10%;
+            width: 40%; height: 40%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            z-index: -1;
         }
 
         .app-container {
             width: 100%;
-            max-width: 550px;
-            background: var(--bg-overlay);
-            backdrop-filter: blur(20px);
-            border-radius: 35px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            max-width: 500px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary), var(--glitch));
+            background: linear-gradient(135deg, #6366f1, #a855f7);
             color: white;
-            padding: 30px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
         }
 
         .header-logo {
-            width: 120px;
-            height: auto;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            width: 100px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
+            transition: transform 0.3s ease;
         }
+        
+        .header-logo:hover { transform: scale(1.1) rotate(5deg); }
 
-        .header-text { text-align: left; }
-        header h1 { margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -1px; text-transform: uppercase; }
+        header h1 { margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px; }
 
         .progress-section {
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.4);
-            text-align: center;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.5);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .bar-container {
-            height: 14px;
+            height: 10px;
             background: #e2e8f0;
-            border-radius: 7px;
+            border-radius: 10px;
             overflow: hidden;
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
         .bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--success), #34d399);
+            background: linear-gradient(90deg, #10b981, #34d399);
             width: 0%;
-            transition: width 0.5s ease-out;
+            transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .petition-box {
-            margin: 20px;
+        /* Kart Struktur */
+        .card {
+            margin: 15px 20px;
             padding: 20px;
-            background: rgba(237, 45, 46, 0.1);
-            border: 2px dashed var(--change);
-            border-radius: 25px;
+            border-radius: 24px;
+            background: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        .petition-box { border-left: 5px solid var(--change); }
+        .glitch-box { border-left: 5px solid var(--glitch); }
+
+        .btn {
+            display: block;
             text-align: center;
+            padding: 14px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-petition { background: var(--change); color: white; display: inline-block; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 10px; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-glitch { background: var(--glitch); color: white; }
+        .btn-change { background: var(--change); color: white; }
 
-        .glitch-box {
-            margin: 20px;
-            padding: 25px;
-            background: rgba(168, 85, 247, 0.08);
-            border: 2px solid var(--glitch);
-            border-radius: 28px;
-        }
+        .btn:active { transform: scale(0.96); }
 
-        .field-group { margin-bottom: 18px; }
-        .field-group label { display: block; font-size: 13px; font-weight: 800; color: var(--glitch); margin-bottom: 8px; }
+        /* Form elementləri */
+        .field-group { margin-top: 15px; }
+        .field-group label { font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; }
         
-        .copy-area { display: flex; gap: 10px; }
+        .copy-area {
+            display: flex; gap: 8px; margin-top: 5px;
+        }
+
         .copy-area input, .copy-area textarea {
-            flex: 1; padding: 14px; border-radius: 15px; border: 1px solid #cbd5e1; font-size: 14px; background: #fff;
+            flex: 1; padding: 12px; border-radius: 12px; border: 1px solid #cbd5e1;
+            font-size: 13px; background: #f8fafc; resize: none;
         }
 
         .copy-btn {
-            background: var(--primary); color: white; border: none; padding: 0 18px; border-radius: 15px; font-weight: bold; cursor: pointer;
+            background: #f1f5f9; color: #475569; border: none; padding: 0 15px; 
+            border-radius: 12px; font-weight: 600; font-size: 12px;
         }
 
+        /* Siyahı */
         .cinema-item {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px; margin: 12px 20px; background: white;
-            border-radius: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 15px 20px; margin: 10px 20px; background: white;
+            border-radius: 20px;
         }
 
         .action-link {
-            background: var(--primary); color: white; text-decoration: none;
-            padding: 12px 24px; border-radius: 30px; font-size: 14px; font-weight: bold;
-            transition: background 0.3s;
+            padding: 10px 20px; border-radius: 15px; font-size: 13px; font-weight: 700;
+            text-decoration: none; transition: 0.3s;
         }
 
-        .action-link.done { background: var(--success); pointer-events: none; }
+        .action-link.active { background: #eff6ff; color: var(--primary); }
+        .action-link.done { background: #ecfdf5; color: var(--success); }
 
         .social-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 25px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 20px;
         }
 
         .social-btn {
-            display: flex; align-items: center; justify-content: center;
-            padding: 15px; border-radius: 20px; text-decoration: none; color: white; font-weight: 800;
+            padding: 15px; border-radius: 18px; text-decoration: none; color: white; 
+            text-align: center; font-weight: 700; font-size: 14px;
         }
 
-        footer { text-align: center; padding: 35px; font-size: 13px; color: #64748b; font-weight: 500; }
+        footer { text-align: center; padding: 30px; font-size: 12px; color: #94a3b8; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
     <header>
-        <img src="TADC Logo.png" alt="TADC Logo" class="header-logo">
-        <div class="header-text">
-            <h1>TADC AZƏRBAYCAN</h1>
-            <div style="font-size: 14px; opacity: 0.9;">Rəsmi Kampaniya Paneli</div>
-        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Placeholder_view_vector.svg/1200px-Placeholder_view_vector.svg.png" alt="Logo" class="header-logo" id="logo-img">
+        <h1>TADC AZƏRBAYCAN</h1>
+        <p style="margin: 5px 0 0; opacity: 0.8; font-size: 13px;">Gələcəyi bir yerdə dəyişək!</p>
     </header>
 
     <div class="progress-section">
-        <div id="stat-counter" style="font-weight: 900; font-size: 18px; color: #1e293b;">0 / 6 Addım Tamamlanıb</div>
+        <div id="stat-counter" style="font-weight: 800; font-size: 15px;">0 / 6 Addım Hazırdır</div>
         <div class="bar-container"><div class="bar-fill" id="progress-fill"></div></div>
     </div>
 
-    <div class="petition-box">
-        <h3 style="margin:0; color:var(--change);">✍️ İmza Kampaniyamız</h3>
-        <p style="font-size:14px; margin:10px 0;">Hədəfimizə çatmaq üçün imzanı əsirgəmə!</p>
-        <a href="https://c.org/sX8JJLZXY2" target="_blank" class="btn-petition" id="petition-btn" onclick="updateStats('petition')">Kampaniyaya Qoşul</a>
+    <div class="card petition-box">
+        <h3 style="margin:0 0 10px; font-size: 17px;">📝 İmza Kampaniyası</h3>
+        <p style="font-size:13px; color: #64748b; margin-bottom: 15px;">Change.org üzərindən səsimizi duyuraq.</p>
+        <a href="https://c.org/sX8JJLZXY2" target="_blank" class="btn btn-change" id="btn-petition" onclick="updateStats('petition')">İmza At</a>
     </div>
 
-    <div class="glitch-box">
-        <h3 style="color:var(--glitch); margin-top:0;">🎬 GLITCH Form Köməkçisi</h3>
-        <a href="https://www.glitchprod.com/contact" target="_blank" class="action-link" id="glitch-btn" style="display:block; text-align:center; margin-bottom:20px; background:var(--glitch);" onclick="updateStats('glitch')">
-            Contact Formunu Aç
-        </a>
+    <div class="card glitch-box">
+        <h3 style="margin:0 0 15px; font-size: 17px; color: var(--glitch);">📩 GLITCH Rəsmi Müraciət</h3>
+        <a href="https://www.glitchprod.com/contact" target="_blank" class="btn btn-glitch" id="btn-glitch" onclick="updateStats('glitch')">Formu Aç</a>
         
         <div class="field-group">
-            <label>Subject</label>
+            <label>Mövzu (Kopyala)</label>
             <div class="copy-area">
-                <input type="text" id="gl-sub" value="Cinema Request - TADC: The Last Act Azerbaijan" readonly>
+                <input type="text" id="gl-sub" value="Cinema Request - Azerbaijan" readonly>
                 <button class="copy-btn" onclick="copyText('gl-sub')">Kopyala</button>
             </div>
         </div>
-
-        <div class="field-group">
-            <label>Message (English)</label>
-            <div class="copy-area">
-                <textarea id="gl-msg" rows="5" readonly>Dear GLITCH Productions Team,
-
-I am writing to you on behalf of the passionate "The Amazing Digital Circus" (TADC) fanbase in Azerbaijan. We are reaching out to express our immense interest in seeing "TADC: The Last Act" screened in our local cinemas.
-
-There is a significant audience here waiting for the grand finale. We are already contacting local cinema chains like Park Cinema and CinemaPlus to show them there is high demand. We would love to have your support in making this a reality for the fans in Azerbaijan.
-
-Thank you for creating such an amazing world!
-
-Best regards,
-TADC Azerbaijan Community</textarea>
-                <button class="copy-btn" onclick="copyText('gl-msg')">Kopyala</button>
-            </div>
-        </div>
     </div>
 
-    <div style="padding:0 25px; font-weight: 800; color: #475569; font-size: 15px;">YERLİ KİNOTEATRLAR</div>
+    <div style="padding: 10px 25px 5px; font-weight: 800; color: #94a3b8; font-size: 12px; letter-spacing: 1px;">KİNOTEATRLARA MAİL GÖNDƏR</div>
     <div id="cinema-list"></div>
 
     <div class="social-grid">
         <a href="https://x.com/tadcazer" target="_blank" class="social-btn" style="background: #000;">X / Twitter</a>
-        <a href="https://www.instagram.com/tadcazer" target="_blank" class="social-btn" style="background: var(--insta);">Instagram</a>
+        <a href="https://instagram.com/tadcazer" target="_blank" class="social-btn" style="background: var(--insta);">Instagram</a>
     </div>
 
     <footer>
-        © 2026 TADC Azerbaijan Fan Community<br>
-        Bütün hüquqlar qorunur. @tadcazer
+        © 2026 TADC Azerbaijan Community<br>
+        Yerli nümayiş üçün fan təşəbbüsü.
     </footer>
 </div>
 
@@ -212,66 +221,54 @@ TADC Azerbaijan Community</textarea>
         { name: "AF Media", email: "office@afmedia.az" }
     ];
 
-    // Addımları izləmək üçün unikal Set (eyni addım 2-ci dəfə sayılmayacaq)
     let completedSteps = new Set();
-    const totalSteps = cinemas.length + 2; 
-
-    function copyText(id) {
-        document.getElementById(id).select();
-        document.execCommand("copy");
-        alert("Mətn kopyalandı!");
-    }
+    const totalSteps = cinemas.length + 2;
 
     function updateStats(stepId) {
         if(!completedSteps.has(stepId)) {
             completedSteps.add(stepId);
-            
-            // Proqres çubuğunu və mətni yenilə
-            const progressPercent = (completedSteps.size / totalSteps) * 100;
-            document.getElementById('progress-fill').style.width = progressPercent + '%';
+            const progress = (completedSteps.size / totalSteps) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
             document.getElementById('stat-counter').innerText = `${completedSteps.size} / ${totalSteps} Addım Tamamlanıb`;
             
-            // Əgər imza və ya glitch düyməsidirsə, vizual olaraq "tamamlandı" et
-            if(stepId === 'petition') document.getElementById('petition-btn').style.opacity = "0.6";
-            if(stepId === 'glitch') document.getElementById('glitch-btn').style.opacity = "0.6";
+            const btn = document.getElementById('btn-' + stepId);
+            if(btn) {
+                btn.style.opacity = "0.5";
+                btn.innerText = "Tamamlandı ✓";
+            }
         }
+    }
+
+    function copyText(id) {
+        const el = document.getElementById(id);
+        el.select();
+        document.execCommand("copy");
+        const btn = event.target;
+        btn.innerText = "Kopyalandı!";
+        setTimeout(() => btn.innerText = "Kopyala", 2000);
     }
 
     window.onload = () => {
         const list = document.getElementById('cinema-list');
-        const sub = encodeURIComponent("TADC: The Last Act Azərbaycan Nümayişi Haqqında Müraciət");
-        const body = encodeURIComponent(`Hörmətli Filial Müdiri və Marketinq Komandası,
-
-Biz, Azərbaycandakı "The Amazing Digital Circus" (TADC) fanat icması olaraq sizə müraciət edirik. Dünyada milyonlarla izləyicisi olan bu fenomenal layihənin final seriyası olan "The Last Act"in yerli kinoteatrlarımızda nümayiş olunmasını böyük səbirsizliklə gözləyirik.
-
-Məlumat üçün bildirmək istəyirik ki, ölkəmizdə bu layihənin çox böyük və aktiv izləyici kütləsi mövcuddur. Filmin kinoteatrlarda nümayişi həm biz fanatları sevindirər, həm də yerli kino bazarı üçün böyük maraq kəsb edərdi.
-
-Bu layihənin nümayiş imkanlarını nəzərdən keçirməyinizi və bizə müsbət rəy bildirməyinizi xahiş edirik. Biz icma olaraq nümayişin təbliği üçün hər cür sosial media dəstəyi verməyə hazırıq.
-
-Diqqətiniz üçün təşəkkür edirik.
-
-Hörmətlə,
-TADC Azərbaycan Fan İcması`);
+        const sub = encodeURIComponent("TADC: The Last Act Azərbaycan Nümayişi");
+        const body = encodeURIComponent("Salam, TADC: The Last Act filmini kinoteatrlarınızda görmək istəyirik!");
 
         cinemas.forEach((c, i) => {
             const div = document.createElement('div');
-            div.className = 'cinema-item';
+            div.className = 'cinema-item card';
             div.innerHTML = `
-                <div><strong>${c.name}</strong><br><small>${c.email}</small></div>
+                <div>
+                    <div style="font-weight:700; font-size:15px;">${c.name}</div>
+                    <div style="font-size:11px; color:#94a3b8;">${c.email}</div>
+                </div>
                 <a href="mailto:${c.email}?subject=${sub}&body=${body}" 
-                   class="action-link" 
+                   class="action-link active" 
                    id="btn-c-${i}"
-                   onclick="handleMailClick(this, 'c-${i}')">Mail Aç</a>
+                   onclick="this.innerText='Göndərildi ✓'; this.className='action-link done'; updateStats('c-${i}')">Mail At</a>
             `;
             list.appendChild(div);
         });
     };
-
-    function handleMailClick(btn, stepId) {
-        btn.innerText = "Açıldı";
-        btn.classList.add('done'); // pointer-events: none olduğu üçün təkrar basıla bilməyəcək
-        updateStats(stepId);
-    }
 </script>
 
 </body>
